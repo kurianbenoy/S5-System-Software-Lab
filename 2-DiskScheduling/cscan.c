@@ -2,13 +2,15 @@
 #include<stdlib.h>
 
 # define LOW 0
-# define HIGH 200
 
 int main()
 {
 	int n,queue[100],head,i,j;
-	int dloc,min,max;
+	int dloc,min,max,high,totals,avg;
 	
+	printf("\n Enter the maximum \n");
+	scanf("%d",&high);
+
 	printf("\n Enter the no of disk location");
 	scanf("%d",&n);
 	
@@ -57,31 +59,38 @@ int main()
 	{
 		for(int j=dloc; j>=0; j--){
         printf("%d --> ",queue[j]);
+		totals += abs(queue[j]-head);
+		head = queue[j];
       }
-	  printf("%d-->%d-->",LOW,HIGH);
+	  printf("%d-->%d-->",LOW,high);
       for(int j=n-1; j>=dloc+1; j--){
         printf("%d --> ",queue[j]);
+		totals += abs(queue[j]-head);
+		head = queue[j];
       }
 	}
 
 	if(abs(queue[dloc+1])>=abs(queue[dloc-1]))
 {
 	for(int j=dloc+1;j<=n;j++)
+	{
 		printf("%d -->",queue[j]);
+		totals += abs(queue[j]-head);
+		head = queue[j];
+	}
 
-	printf("%d -->%d -->",HIGH,LOW);
+	printf("%d -->%d -->",high,LOW);
 	
 	for(int j=0;j<=dloc -1;j++)
 	{
 		printf("%d -->",queue[j]);
+		totals += abs(queue[j]-head);
+		head = queue[j];
 	}
 }
 
-	int totals, avgs;
-	totals = head - LOW+ HIGH + max;
-	avgs = totals/n;
-	
 	printf("\nTotal Seek time : %d \n",totals);
+	avgs = totals/n;
 	printf("Avg seek time : %d \n",avgs);
 }
 

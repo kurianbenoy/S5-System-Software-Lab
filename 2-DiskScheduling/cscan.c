@@ -20,6 +20,8 @@ int main()
 		scanf("%d",&queue[i]);
 	}
 
+	queue[n] = head;
+
 	void swap(int *xp, int *yp)
 {
     int temp = *xp;
@@ -37,9 +39,9 @@ int main()
 		}
 	}
 	
-	sort(queue,n);
+	sort(queue,n+1);
 	min = queue[0];
-	max = queue[n-1];
+	max = queue[n];
 
 	// locate head in queue
 
@@ -51,7 +53,7 @@ int main()
 			}
 		}
 	
-	if(abs(head-LOW)<=abs(head-HIGH))
+	if(abs(queue[dloc-1])>=abs(queue[dloc+1]))
 	{
 		for(int j=dloc; j>=0; j--){
         printf("%d --> ",queue[j]);
@@ -62,8 +64,21 @@ int main()
       }
 	}
 
+	if(abs(queue[dloc+1])>=abs(queue[dloc-1]))
+{
+	for(int j=dloc+1;j<=n;j++)
+		printf("%d -->",queue[j]);
+
+	printf("%d -->%d -->",HIGH,LOW);
+	
+	for(int j=0;j<=dloc -1;j++)
+	{
+		printf("%d -->",queue[j]);
+	}
+}
+
 	int totals, avgs;
-	totals = head - LOW+ HIGH + queue[dloc+1];
+	totals = head - LOW+ HIGH + max;
 	avgs = totals/n;
 	
 	printf("\nTotal Seek time : %d \n",totals);

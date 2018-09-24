@@ -235,13 +235,6 @@ int main()
 		break;
 	case 3: roundrobin(bt,n);
 		break;
-	case 4: printf("Enter the proess priority | burst time ");
-		for(i =0;i<n;i++)
-		{
-		printf("Enter the priority of P %d",&i);
-		scanf("%d%d",btp[i],pt[i]);
-		
-		}
 }
 
     return 0;

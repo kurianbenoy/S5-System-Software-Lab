@@ -6,14 +6,14 @@
 int main()
 {
 	int n,queue[100],head,i,j;
-	int dloc,min,max,high,totals,avg;
-	
+	int dloc,min,max,high,totals,avgs;
+
 	printf("\n Enter the maximum \n");
 	scanf("%d",&high);
 
 	printf("\n Enter the no of disk location");
 	scanf("%d",&n);
-	
+
 	printf("\n Enter the head position\n");
 	scanf("%d",&head);
 	for(i=0;i<n;i++)
@@ -40,57 +40,64 @@ int main()
 		swap(&arr[j],&arr[j+1]);
 		}
 	}
-	
+
 	sort(queue,n+1);
 	min = queue[0];
 	max = queue[n];
 
+// 	for(i=0;i<n;i++)
+// {
+// 	printf("%d\n",queue[i]);
+// }
 	// locate head in queue
 
 	for(int i=0;i<n;i++){
+
 		if(head == queue[i])
 		{
 			dloc = i;
 			break;
 			}
 		}
-	
-	if(abs(queue[dloc-1])>=abs(queue[dloc+1]))
+
+
+
+	if(abs(queue[dloc+1]-head)>=abs(queue[dloc-1]-head))
+	{
+		for(int j=dloc;j<n;j++)
+		{
+			printf("%d -->",queue[j]);
+			totals += abs(queue[j]-head);
+			head = queue[j];
+		}
+
+		printf("%d -->%d -->",high,LOW);
+
+		for(int j=0;j<dloc-1;j++)
+		{
+			printf("%d -->",queue[j]);
+			totals += abs(queue[j]-head);
+			head = queue[j];
+		}
+}
+
+	else if(abs(queue[dloc-1]-head)>=abs(queue[dloc+1]-head))
 	{
 		for(int j=dloc; j>=0; j--){
-        printf("%d --> ",queue[j]);
+        printf("\n%d --> ",queue[j]);
 		totals += abs(queue[j]-head);
 		head = queue[j];
       }
 	  printf("%d-->%d-->",LOW,high);
-      for(int j=n-1; j>=dloc+1; j--){
-        printf("%d --> ",queue[j]);
+      for(int j=n-1; j>=dloc+1; j--)
+	  {
+        printf("\n%d --> ",queue[j]);
 		totals += abs(queue[j]-head);
 		head = queue[j];
       }
 	}
-
-	if(abs(queue[dloc+1])>=abs(queue[dloc-1]))
-{
-	for(int j=dloc+1;j<=n;j++)
-	{
-		printf("%d -->",queue[j]);
-		totals += abs(queue[j]-head);
-		head = queue[j];
-	}
-
-	printf("%d -->%d -->",high,LOW);
-	
-	for(int j=0;j<=dloc -1;j++)
-	{
-		printf("%d -->",queue[j]);
-		totals += abs(queue[j]-head);
-		head = queue[j];
-	}
-}
 
 	printf("\nTotal Seek time : %d \n",totals);
 	avgs = totals/n;
 	printf("Avg seek time : %d \n",avgs);
 }
-

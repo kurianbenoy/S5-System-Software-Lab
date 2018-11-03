@@ -6,7 +6,7 @@ using namespace std;
 struct Dir {
 	char dname[10],filename[10][10];
 	int fno;
-}file; 
+}file[100]; 
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
 
 	while(1)
 	{
-	cout<<"Enter the FILE OPERATION TO PERFORM \n 1. INSERT A FILE \n 2. DELETE A FILE \n 3. DISPLAY FILES \n 4. END\n 5. SEARCH A FILE \n";
+	cout<<"Enter the FILE OPERATION TO PERFORM \n 1. INSERT A FILE \n 2. DELETE A FILE \n 3. DISPLAY FILES \n 4. END\n 5. SEARCH A FILE";
     cin>>ch;
 	switch(ch)
 	{
@@ -37,7 +37,7 @@ int main()
 					{
 						
 						strcpy(file.filename[i],file.filename[i-1]);
-						cout<<"File to be deleted is"<<fsearch<<"\n";
+						cout<<"File to be deleted is"<<fsearch;
 						break;
 					}
 				}
@@ -58,15 +58,12 @@ int main()
 				{
 					if(strcmp(fsearch,file.filename[i])==0)
 					{
-						cout<<"file"<<file.filename[i]<<"  found at :"<<i<<"\n";
+						cout<<"file"<<file.filename[i]<<"  found at :"<<i;
 	
 					}}
 			}
 	}
 	return 0;
 
-	std::cout << "Hello";
-
-	return 0;
 }
 

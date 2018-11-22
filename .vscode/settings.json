@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "git.enableSmartCommit": true,
+    "git.promptToSaveFilesBeforeCommit": true,
+    "C_Cpp.errorSquiggles": "Disabled"
+}

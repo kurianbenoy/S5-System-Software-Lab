@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#define size 17
+#define size 10
 
 
 struct symbol{
@@ -32,7 +32,8 @@ int hash(char *a){
 void insert(struct symbol *table[], struct symbol entry){
     int hashVal = hash(entry.name), i=0;
 
-    while(table[hashVal] != NULL && i<size){
+    while(table[hashVal] != NULL && i<size)
+    {
         if(strcmp(table[hashVal]->name, entry.name) == 0){
             printf("----Symbol already exists----");
             return;
@@ -48,7 +49,6 @@ void insert(struct symbol *table[], struct symbol entry){
     table[hashVal] = malloc(sizeof(struct symbol));
     strcpy(table[hashVal]->name, entry.name);
     table[hashVal]->addr = entry.addr;
-
 }
 
 int search(struct symbol *table[], char *a){

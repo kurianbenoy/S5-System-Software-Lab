@@ -49,7 +49,6 @@ void* consumer(void* arg)
 		if(available)
 		{
 			sem_wait(&mutex);
-
 			c = shared_variable[i];
 			printf("Consumed: %d\n", c);
 			fflush(stdout);

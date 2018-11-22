@@ -53,7 +53,7 @@ void main()
 		{
 			case 0: strcpy(tmp, pwd->path);
 					strcat(tmp, pwd->node_name);	
-					printf("%s\n", tmp);
+					printf("%s\n", tmp[0]);
 					break;
 			case 1: ls();
 					break;
@@ -88,6 +88,7 @@ void NewNode(char *name, int type)
 
 	new_node->node_name = (char*)malloc(strlen(name)*sizeof(char));
 	new_node->path = (char*)malloc((temp+1)*sizeof(char));
+	printf("%s",new_node->adjecent_node);
 	
 	strcpy(new_node->node_name, name); 
 	strcpy(new_node->path, pwd->path);

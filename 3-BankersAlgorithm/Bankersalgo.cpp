@@ -5,6 +5,7 @@ using namespace std;
 class bankers
 {
     private:
+        // 3 two_D arrays and 3 one_D array
         int al[MAX][MAX],m[MAX][MAX],n[MAX][MAX],avail[MAX];
         int nop,nor,k,result[MAX],pnum,work[MAX],finish[MAX];
 

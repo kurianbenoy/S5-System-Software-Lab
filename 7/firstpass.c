@@ -57,7 +57,6 @@ while(!feof(p))
     if(strcmp(opcode,optab)==0)
     {
       locctr=locctr+3;
-      break;
     }
   }
   fclose(fop);
